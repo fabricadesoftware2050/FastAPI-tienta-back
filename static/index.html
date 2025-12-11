@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café del Valle | Tienda Online</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Personalización ligera para colores "Café" */
+        :root {
+            --coffee-primary: #6F4E37; /* Marrón Café */
+            --coffee-secondary: #ECF0F1;
+            --coffee-accent: #D2691E; /* Chocolate */
+        }
+
+        .navbar {
+            background-color: var(--coffee-primary);
+        }
+        .navbar-item, .navbar-link, .navbar-burger {
+            color: white !important;
+        }
+        .button.is-coffee {
+            background-color: var(--coffee-primary);
+            color: white;
+            transition: 0.3s;
+        }
+        .button.is-coffee:hover {
+            background-color: var(--coffee-accent);
+        }
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        /* Capa oscura sobre la imagen del hero para que se lea el texto */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .hero-body {
+            position: relative;
+            z-index: 1;
+        }
+        .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .card-footer {
+            margin-top: auto;
+            border-top: none;
+            padding: 1.5rem;
+        }
+        .tag.is-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--coffee-primary);
+        }
+    </style>
+<style type="text/css">
+
+</style>
+<script>
+// Escribir aqui el código Javascript
+
+</script>
+</head>
+<body>
+
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">
+                    <i class="fas fa-mug-hot fa-lg mr-2"></i>
+                    <strong>CAFÉ DEL VALLE</strong>
+                </a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasic" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item">Inicio</a>
+                    <a class="navbar-item">Nuestros Granos</a>
+                    <a class="navbar-item">Accesorios</a>
+                    <div class="navbar-item">
+                        <div class="button is-light">
+                            <span class="icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </span>
+                            <span id="cart-count">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-medium">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title has-text-white is-1">
+                    Despierta tus sentidos
+                </p>
+                <p class="subtitle has-text-white is-3">
+                    El mejor café de especialidad, directo a tu taza.
+                </p>
+                <button class="button is-coffee is-large is-rounded mt-4" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'});">
+                    Ver Catálogo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="productos">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered mb-6" style="color: var(--coffee-primary);">Nuestra Selección de Granos</h2>
+
+            <div class="columns is-multiline">
+
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Espresso Intenso">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Espresso Intenso</p>
+                                    <p class="subtitle is-6">Tueste Oscuro</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                Mezcla potente con notas de chocolate amargo y nueces. El "kick" matutino definitivo.
+                                <br>
+                                <span class="tag is-light mt-2">Origen: Colombia</span>
+                            </div>
+                        </div>
+                        <div class="card-footer is-flex is-justify-content-space-between is-align-items-center">
+                            <span class="tag is-price">$18.00</span>
+                            <button class="button is-coffee is-outlined" onclick="addToCart('Espresso Intenso')">
+                                <span class="icon"><i class="fas fa-plus"></i></span>
+                                <span>Agregar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="House Blend">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">House Blend Suave</p>
+                                    <p class="subtitle is-6">Tueste Medio</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                Equilibrado y aromático con toques frutales. Perfecto para disfrutar todo el día.
+                                <br>
+                                <span class="tag is-light mt-2">Origen: Etiopía</span>
+                            </div>
+                        </div>
+                        <div class="card-footer is-flex is-justify-content-space-between is-align-items-center">
+                            <span class="tag is-price">$22.50</span>
+                            <button class="button is-coffee is-outlined" onclick="addToCart('House Blend Suave')">
+                                <span class="icon"><i class="fas fa-plus"></i></span>
+                                <span>Agregar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Decaf">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Decaf Nocturno</p>
+                                    <p class="subtitle is-6">Descafeinado</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                Todo el sabor sin cafeína. Proceso natural al agua suiza que conserva el aroma.
+                                <br>
+                                <span class="tag is-light mt-2">Origen: Brasil</span>
+                            </div>
+                        </div>
+                        <div class="card-footer is-flex is-justify-content-space-between is-align-items-center">
+                            <span class="tag is-price">$20.00</span>
+                            <button class="button is-coffee is-outlined" onclick="addToCart('Decaf Nocturno')">
+                                <span class="icon"><i class="fas fa-plus"></i></span>
+                                <span>Agregar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Sumatra">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Sumatra Mandheling</p>
+                                    <p class="subtitle is-6">Tueste Completo</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                Cuerpo pesado con notas terrosas y herbales. Baja acidez, sabor muy intenso.
+                                <br>
+                                <span class="tag is-light mt-2">Origen: Indonesia</span>
+                            </div>
+                        </div>
+                        <div class="card-footer is-flex is-justify-content-space-between is-align-items-center">
+                            <span class="tag is-price">$24.00</span>
+                            <button class="button is-coffee is-outlined" onclick="addToCart('Sumatra Mandheling')">
+                                <span class="icon"><i class="fas fa-plus"></i></span>
+                                <span>Agregar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="French Roast">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">French Roast</p>
+                                    <p class="subtitle is-6">Tueste Muy Oscuro</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                Granos brillantes y aceitosos. Sabor ahumado y audaz para los amantes del café fuerte.
+                                <br>
+                                <span class="tag is-light mt-2">Origen: Blend Global</span>
+                            </div>
+                        </div>
+                        <div class="card-footer is-flex is-justify-content-space-between is-align-items-center">
+                            <span class="tag is-price">$19.50</span>
+                            <button class="button is-coffee is-outlined" onclick="addToCart('French Roast')">
+                                <span class="icon"><i class="fas fa-plus"></i></span>
+                                <span>Agregar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Kenya AA">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Kenya AA Grand</p>
+                                    <p class="subtitle is-6">Tueste Claro</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                Conocido por su acidez vinosa y notas de bayas negras. Complejo y brillante.
+                                <br>
+                                <span class="tag is-light mt-2">Origen: Kenia</span>
+                            </div>
+                        </div>
+                        <div class="card-footer is-flex is-justify-content-space-between is-align-items-center">
+                            <span class="tag is-price">$26.00</span>
+                            <button class="button is-coffee is-outlined" onclick="addToCart('Kenya AA Grand')">
+                                <span class="icon"><i class="fas fa-plus"></i></span>
+                                <span>Agregar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Saborizado">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Avellana &amp; Vainilla</p>
+                                    <p class="subtitle is-6">Saborizado</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                Una delicia dulce y cremosa. Granos arábica impregnados de esencia natural.
+                                <br>
+                                <span class="tag is-light mt-2">Origen: México</span>
+                            </div>
+                        </div>
+                        <div class="card-footer is-flex is-justify-content-space-between is-align-items-center">
+                            <span class="tag is-price">$21.00</span>
+                            <button class="button is-coffee is-outlined" onclick="addToCart('Avellana &amp; Vainilla')">
+                                <span class="icon"><i class="fas fa-plus"></i></span>
+                                <span>Agregar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://images.unsplash.com/photo-1524350876685-274059332603?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Organico">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Verde Orgánico</p>
+                                    <p class="subtitle is-6">Sin Tostar</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                Para los aficionados que tuestan en casa. Granos crudos 100% orgánicos certificados.
+                                <br>
+                                <span class="tag is-light mt-2">Origen: Perú</span>
+                            </div>
+                        </div>
+                        <div class="card-footer is-flex is-justify-content-space-between is-align-items-center">
+                            <span class="tag is-price">$16.50</span>
+                            <button class="button is-coffee is-outlined" onclick="addToCart('Verde Orgánico')">
+                                <span class="icon"><i class="fas fa-plus"></i></span>
+                                <span>Agregar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://images.unsplash.com/photo-1461023058943-48dbf1399192?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Cold Brew">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Cold Brew Molido</p>
+                                    <p class="subtitle is-6">Molienda Gruesa</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                Molienda especial gruesa diseñada específicamente para extracción en frío (12-24h).
+                                <br>
+                                <span class="tag is-light mt-2">Origen: Guatemala</span>
+                            </div>
+                        </div>
+                        <div class="card-footer is-flex is-justify-content-space-between is-align-items-center">
+                            <span class="tag is-price">$23.00</span>
+                            <button class="button is-coffee is-outlined" onclick="addToCart('Cold Brew Kit')">
+                                <span class="icon"><i class="fas fa-plus"></i></span>
+                                <span>Agregar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer has-background-light">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Café del Valle</strong> por <a href="#">Tu Nombre</a>.
+                <br>
+                Elaborado con <span class="has-text-danger">❤</span> y mucha cafeína usando
+                <a href="https://bulma.io">Bulma CSS</a>.
+            </p>
+            <div class="mt-4">
+                <span class="icon is-large has-text-grey"><i class="fab fa-instagram fa-2x"></i></span>
+                <span class="icon is-large has-text-grey"><i class="fab fa-facebook fa-2x"></i></span>
+                <span class="icon is-large has-text-grey"><i class="fab fa-twitter fa-2x"></i></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica del menú hamburguesa para móviles
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach( el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+
+        // Lógica simple del carrito
+        let count = 0;
+        function addToCart(productName) {
+            count++;
+            document.getElementById('cart-count').innerText = count;
+
+            // Animación simple de alerta (opcional)
+            alert(`¡Has agregado "${productName}" al carrito!`);
+        }
+    </script>
+
+
+</body></html>
